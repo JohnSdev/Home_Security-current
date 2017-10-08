@@ -1,7 +1,7 @@
 // ConsoleApplication1.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
-#include "vector.h"
+#include "Cloud.h" //New name
 #include <iostream>
 #include <stdio.h>
 #include <string>
@@ -16,7 +16,7 @@ int irCounter = 2;
 
 int main()
 {
-	Panel panel;
+	CPanel panel;
 	Cloud cloud;
 	std::string val;
 	cloud.prepare();
