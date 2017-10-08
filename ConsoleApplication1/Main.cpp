@@ -1,7 +1,7 @@
 // ConsoleApplication1.cpp : Defines the entry point for the console application.
 //
 #include "stdafx.h"
-#include "Cloud.h" //New name
+#include "Cloud.h"
 #include <iostream>
 #include <stdio.h>
 #include <string>
