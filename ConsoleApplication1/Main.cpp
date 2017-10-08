@@ -26,6 +26,8 @@ int main()
 		cloud.menu();
 		std::cin >> val;
 		if (val == "1") {
+			panel.printCPanel();
+			panel.menuCPanel();
 			//cloud.printCunits();
 		}
 		else if (val == "2") {
