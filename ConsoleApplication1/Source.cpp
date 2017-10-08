@@ -17,7 +17,7 @@ Adv_sensor::Adv_sensor() {
 }
 
 int Cloud::id_to_int() {
-	std::cout << "Type the ID of the sensor:" << std::endl;
+	std::cout << "\t\tType the ID of the sensor:" << std::endl;
 	int id;
 	std::string val;
 	std::cin.clear();
@@ -239,9 +239,56 @@ CPanel::CPanel() { //Default constructor
 
 
 void CPanel::printCPanel() {
-	std::cout << "\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-	std::cout << "\t\t\t\t   Control Panel Interface" << std::endl;
-	std::cout << "\t\t\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" << std::endl << std::endl;
+	std::cout << "\t\t\t   ____________________________________________" << std::endl;
+	std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
+	std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;
+	std::cout << "\t\tID:\tStatus:\t\tValue:\t\tInfo:" << std::endl;
+	for (int i = 0; i < sensor.size(); i++) {
+
+		std::cout << "\t\t" << sensor[i].id << "\t";
+		if (sensor[i].id[0] == 't' || sensor[i].id[0] == 'i') {
+			//std::cout << sensor[i].status << "\t";
+			if (sensor[i].status == 1) {
+				std::cout << "ON" << "\t\t";
+			}
+			else {
+				std::cout << "OFF" << "\t\t";
+			}
+		}
+		if (sensor[i].id[0] == 'd') {
+			if (sensor[i].status == 1) {
+				std::cout << "Open" << "\t\t";
+			}
+			else {
+				std::cout << "Closed" << "\t\t";
+			}
+		}
+
+		std::cout << sensor[i].value << "\t\t";
+		std::cout << sensor[i].name << "\t" << std::endl;
+
+	}
+	std::cout << std::endl;
+	std::cout << "\t\t\t________________________________________________" << std::endl;
+	std::cout << "\t\t\t\t\tADVANCED SENSORS:" << std::endl;
+	std::cout << "\t\t\t________________________________________________\n" << std::endl;
+	std::cout << "\t\tID:\tStatus:\t\tParameter:\tParamValue:\tInfo:\t" << std::endl;
+	for (int i = 0; i < adv_sensor.size(); i++) {
+		std::cout << "\t\t" << adv_sensor[i].id << "\t";
+		if (adv_sensor[i].status == 1) {
+			std::cout << "ON" << "\t\t";
+		}
+		else {
+			std::cout << "OFF" << "\t\t";
+		}
+		std::cout << adv_sensor[i].param << "\t\t";
+		std::cout << adv_sensor[i].param_value << "\t";
+		std::cout << adv_sensor[i].name << "\t" << std::endl;
+	}
+	std::cout << std::endl << std::endl << std::endl;
+}
+
+	/*
 	std::cout << "\tID" << "\t\t\tSTATUS" << "\t\tINFO" << "\t\tPARAMETER" << "\tVALUE" << "\t\tNAME" << std::endl;
 	std::cout << "_______________________________________________________________________________________\n" << std::endl;
 	for (int i = 0; i < sensor.size(); i++) { //Print normal sensors
@@ -252,8 +299,9 @@ void CPanel::printCPanel() {
 		std::cout << "\t" << adv_sensor[i].id << "\t\t" << adv_sensor[i].name << "\t\t" << adv_sensor[i].status << "\t\t"
 			<< adv_sensor[i].value << adv_sensor[i].param << adv_sensor[i].param_value << std::endl;
 	}
+	*/
 
-}
+
 
 
 
@@ -285,7 +333,7 @@ void CPanel::menuCPanel() {
 
 void CPanel::sensorParam(int x) {
 	// Return från int_to_vector()
-	std::cout << "\t\tSelected sensor: " << adv_sensor[x].id << "\tInfo: \n" << adv_sensor[x].name << std::endl;
+	std::cout << "\t\tSelected sensor: " << adv_sensor[x].id << "\tInfo: " << adv_sensor[x].name << "\n" << std::endl;
 
 	std::cout << "\t\tParameter: " << adv_sensor[x].param << "\tValue: " << adv_sensor[x].param_value << std::endl;
 	std::cout << "\t\tEnter new Value: " << std::endl;
