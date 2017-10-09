@@ -49,16 +49,14 @@ int main()
 		}
 		else if (val == "3") {
 			int whichSensor = cloud.removeSensor();
-			counter--;
-			if (whichSensor = 0) {
-
+			
+			if (whichSensor == 0) {
+				tmpCounter--;
 			}
-			if (whichSensor = 1) {
-
+			if (whichSensor == 1) {
+				counter--;
 			}
-			if (whichSensor = 2) {
-
-			}
+		
 
 		}
 
