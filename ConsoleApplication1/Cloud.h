@@ -21,6 +21,7 @@ public:
 	void prepare();
 	void menu();
 	int id_to_int();
+	int removeSensor();
 	//void menu(int);
 	//void test();
 
@@ -63,6 +64,7 @@ public:
 	void menuCPanel();
 	void sensorParam(int);
 	void Set_Status();
+	
 
 };
 
