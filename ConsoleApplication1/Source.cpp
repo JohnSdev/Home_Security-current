@@ -12,7 +12,7 @@ Sensor::Sensor() {
 }
 
 Adv_sensor::Adv_sensor() {
-	param = "Temperature";
+	param = "Max temp alam";
 	param_value = 23;
 }
 
@@ -50,10 +50,10 @@ int Cloud::id_to_int() {
 int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter) {
 
 	int val;
-	std::cout << "Vilken enhet vill ni lägga till?" << std::endl;
-	std::cout << "1) Tmp-sensor." << std::endl;
-	std::cout << "2) Smart door." << std::endl;
-	std::cout << "3) Movement detector" << std::endl;
+	std::cout << "Choose component type?" << std::endl;
+	std::cout << "1) Advance-sensor." << std::endl;
+	std::cout << "2) Smart door/window." << std::endl;
+	std::cout << "3) Movement detector(IR)" << std::endl;
 
 	std::cin >> val;
 
@@ -82,16 +82,16 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		adv_sensor[tmpCounter - 1].param_value = random;
 		int chooser;
 		std::cout << "What does your sensor measure?" << std::endl;
-		std::cout << "1)Temperature\n2)Humidity\n3)Pressure" << std::endl;
+		std::cout << "1)Temperature\n2)Humidity\n3)Shock" << std::endl;
 		std::cin >> chooser;
 		if (chooser == 1) {
-			adv_sensor[tmpCounter - 1].param = "Temperature";
+			adv_sensor[tmpCounter - 1].param = "Max temp alarm";
 		}
 		if (chooser == 2) {
-			adv_sensor[tmpCounter - 1].param = "Humidity";
+			adv_sensor[tmpCounter - 1].param = "Max humidity alarm";
 		}
 		if (chooser == 3) {
-			adv_sensor[tmpCounter - 1].param = "Pressure";
+			adv_sensor[tmpCounter - 1].param = "Shock value";
 		}
 
 
@@ -120,7 +120,7 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		//std::cout << "Är den på?" << std::endl;
 		sensor[counter - 1].status = 1;
 		return 2;
-	}
+	}/*
 	if (val == 3) {
 		counter++;
 		sensor.resize(counter);
@@ -134,8 +134,27 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		//std::cout << "Är den på?" << std::endl;
 		sensor[counter - 1].status = 1;
 		return 3;
-	}
+	}*/
+	if (val == 3) {
+		counter++;
+		sensor.resize(counter);
 
+		std::string irstring = "i"; //a
+		std::string counterString = std::to_string(irCounter);//a
+
+		std::cin.ignore();
+		std::cout << "Tell some info about it(e.g IR sensor downstairs)" << std::endl;
+		std::string temp;
+		std::cin >> temp;
+		irstring += counterString;//a
+		sensor[counter - 1].name = temp;
+		sensor[counter - 1].id = irstring; //a
+
+		std::cin.ignore();
+		//std::cout << "Är den på?" << std::endl;
+		sensor[counter - 1].status = 1;
+		return 3;
+	}
 }
 
 void Cloud::printUnits()
@@ -202,7 +221,7 @@ void Cloud::prepare()
 	adv_sensor.resize(1);
 	adv_sensor[0].id = "t1";
 	adv_sensor[0].status = 1;
-	adv_sensor[0].param = "Temperature";
+	adv_sensor[0].param = "Max temp alarm";
 	adv_sensor[0].param_value = 23;
 	adv_sensor[0].name = "Temperature in Cellar.";
 
@@ -239,53 +258,54 @@ CPanel::CPanel() { //Default constructor
 
 
 void CPanel::printCPanel() {
-	std::cout << "\t\t\t   ____________________________________________" << std::endl;
-	std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
-	std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;
-	std::cout << "\t\tID:\tStatus:\t\tValue:\t\tInfo:" << std::endl;
-	for (int i = 0; i < sensor.size(); i++) {
+		std::cout << "\t\t\t   ____________________________________________" << std::endl;
+		std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
+		std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;
+		std::cout << "\t\tID:\tStatus:\t\tValue:\t\tInfo:" << std::endl;
+		for (int i = 0; i < sensor.size(); i++) {
 
-		std::cout << "\t\t" << sensor[i].id << "\t";
-		if (sensor[i].id[0] == 't' || sensor[i].id[0] == 'i') {
-			//std::cout << sensor[i].status << "\t";
-			if (sensor[i].status == 1) {
+			std::cout << "\t\t" << sensor[i].id << "\t";
+			if (sensor[i].id[0] == 't' || sensor[i].id[0] == 'i') {
+				//std::cout << sensor[i].status << "\t";
+				if (sensor[i].status == 1) {
+					std::cout << "ON" << "\t\t";
+				}
+				else {
+					std::cout << "OFF" << "\t\t";
+				}
+			}
+			if (sensor[i].id[0] == 'd') {
+				if (sensor[i].status == 1) {
+					std::cout << "Open" << "\t\t";
+				}
+				else {
+					std::cout << "Closed" << "\t\t";
+				}
+			}
+
+			std::cout << sensor[i].value << "\t\t";
+			std::cout << sensor[i].name << "\t" << std::endl;
+
+		}
+		std::cout << std::endl;
+		std::cout << "\t\t\t________________________________________________" << std::endl;
+		std::cout << "\t\t\t\t\tADVANCED SENSORS:" << std::endl;
+		std::cout << "\t\t\t________________________________________________\n" << std::endl;
+		std::cout << "\t\tID:\tStatus:\t\tParameter:\tParamValue:\tInfo:\t" << std::endl;
+		for (int i = 0; i < adv_sensor.size(); i++) {
+			std::cout << "\t\t" << adv_sensor[i].id << "\t";
+			if (adv_sensor[i].status == 1) {
 				std::cout << "ON" << "\t\t";
 			}
 			else {
 				std::cout << "OFF" << "\t\t";
 			}
+			std::cout << adv_sensor[i].param << "\t\t";
+			std::cout << adv_sensor[i].param_value << "\t";
+			std::cout << adv_sensor[i].name << "\t" << std::endl;
 		}
-		if (sensor[i].id[0] == 'd') {
-			if (sensor[i].status == 1) {
-				std::cout << "Open" << "\t\t";
-			}
-			else {
-				std::cout << "Closed" << "\t\t";
-			}
-		}
-
-		std::cout << sensor[i].value << "\t\t";
-		std::cout << sensor[i].name << "\t" << std::endl;
-
-	}
-	std::cout << std::endl;
-	std::cout << "\t\t\t________________________________________________" << std::endl;
-	std::cout << "\t\t\t\t\tADVANCED SENSORS:" << std::endl;
-	std::cout << "\t\t\t________________________________________________\n" << std::endl;
-	std::cout << "\t\tID:\tStatus:\t\tParameter:\tParamValue:\tInfo:\t" << std::endl;
-	for (int i = 0; i < adv_sensor.size(); i++) {
-		std::cout << "\t\t" << adv_sensor[i].id << "\t";
-		if (adv_sensor[i].status == 1) {
-			std::cout << "ON" << "\t\t";
-		}
-		else {
-			std::cout << "OFF" << "\t\t";
-		}
-		std::cout << adv_sensor[i].param << "\t\t";
-		std::cout << adv_sensor[i].param_value << "\t";
-		std::cout << adv_sensor[i].name << "\t" << std::endl;
-	}
-	std::cout << std::endl << std::endl << std::endl;
+		std::cout << std::endl;
+	
 }
 
 	/*
@@ -340,7 +360,8 @@ void CPanel::sensorParam(int x) {
 	int new_value;
 	std::cin >> new_value;
 	adv_sensor[x].param_value = new_value;
-
+	printCPanel();
+	menuCPanel();
 }
 
 
