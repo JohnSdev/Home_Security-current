@@ -364,12 +364,12 @@ void CPanel::printCPanel() {
 
 
 
-void CPanel::menuCPanel() {
+int CPanel::menuCPanel() {
 	int i;
 	int id;
 	char choice;
 	int loop = 1;
-	while (loop=1){
+	while (loop == 1) {
 		std::string sensor;
 
 
@@ -381,16 +381,19 @@ void CPanel::menuCPanel() {
 			sensorParam(id);
 			loop = 0;
 		}
-
+		else if (choice == 49) {
+			loop = 0;
+		}
 		else if (choice != 48 || choice != 49) {
 			std::cout << "\t\t---- == = ERROR == = ----Invalid option!!!Select 0 - 1 \n\n" << std::endl;
 			loop = 1;
 		}
+		
 	}
 
 
 	// Cloud func
-	return;
+	return 0;
 }
 
 void CPanel::sensorParam(int x) {

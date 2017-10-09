@@ -62,7 +62,7 @@ public:
 	CPanel();
 	//Member functions
 	void printCPanel();
-	void menuCPanel();
+	int menuCPanel();
 	void sensorParam(int);
 	void Set_Status();
 	
