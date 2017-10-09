@@ -43,6 +43,43 @@ int Cloud::id_to_int() {
 	return id;
 }
 
+int Cloud::removeSensor() {
+	int temp;
+	std::string compid;
+	std::cout << "Witch component do you want to remove?" << std::endl;
+	std::cout << "1. Advanced Sencor" << std::endl;
+	std::cout << "2.Door or IR sencor" << std::endl;
+	std::cin >> temp;
+	if (temp == 1)
+	{
+		std::cout << "Witch id do you want to remove?" << std::endl;
+		std::cin >> compid;
+		for (int i = 0; i < adv_sensor.size(); i++)
+			if (adv_sensor[i].id == compid) {
+				adv_sensor.erase(adv_sensor.begin() + i);
+				return 0;
+			}
+				
+		std::cout << "component A" << compid << " was succefully deleted" << std::endl;
+
+	}
+	if (temp == 2)
+	{
+		std::cout << "Witch id do you want to remove?" <<std::endl;
+		std::cin >> compid;
+		for (int i = 0; i < sensor.size(); i++)
+			if (sensor[i].id == compid) {
+				sensor.erase(sensor.begin() + i);
+			}
+	}
+
+
+	else
+	{
+		std::cout << "Print a valid input!" <<std::endl;
+	}
+
+}
 
 int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter) {
 
