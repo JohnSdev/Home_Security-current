@@ -367,21 +367,26 @@ void CPanel::printCPanel() {
 void CPanel::menuCPanel() {
 	int i;
 	int id;
-	int choice;
-	std::string sensor;
+	char choice;
+	int loop = 1;
+	while (loop=1){
+		std::string sensor;
 
 
-	std::cout << "\n\n\t\t|| Control Panel. Edit sensor and component paramerters. ||\n\n" << std::endl;
-	std::cout << "\t\t(0) Choose sensor\n \t\t(1) Exit to Cloud menu\n" << std::endl;
-	std::cin >> choice;
-	if (choice == 0) {
-		id = id_to_int();
-		sensorParam(id);
+		std::cout << "\n\n\t\t|| Control Panel. Edit sensor and component paramerters. ||\n\n" << std::endl;
+		std::cout << "\t\t(0) Choose sensor\n \t\t(1) Exit to Cloud menu\n" << std::endl;
+		std::cin >> choice;
+		if (choice == 48) {
+			id = id_to_int();
+			sensorParam(id);
+			loop = 0;
+		}
+
+		else if (choice != 48 || choice != 49) {
+			std::cout << "\t\t---- == = ERROR == = ----Invalid option!!!Select 0 - 1 \n\n" << std::endl;
+			loop = 1;
+		}
 	}
-
-	//else if (choice != "0" || choice != "1") {
-	//	std::cout << "\t\t---- == = ERROR == = ----Invalid option!!!Select 0 - 1 \n\n" << std::endl;
-	//}
 
 
 	// Cloud func
