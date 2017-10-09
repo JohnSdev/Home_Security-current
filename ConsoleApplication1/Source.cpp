@@ -20,27 +20,24 @@ int Cloud::id_to_int() {
 	std::cout << "\t\tType the ID of the sensor:" << std::endl;
 	int id;
 	std::string val;
+	int going = 1;
+	while (going) {
 	std::cin.clear();
 	std::cin >> val;
+	
+	
+		if (val[0] == 'a') {
+			std::string temp = val;
+			for (int i = 0; i < adv_sensor.size(); i++) {
+				if (adv_sensor[i].id == temp) {
+					id = i;
+					going = 0;
+				}
 
-	if (val[0] == 'd' || 'i') {
-		std::string temp = val;
-
-		for (int i = 0; i < sensor.size(); i++) {
-			if (sensor[i].id == temp) {
-				id = i;
 			}
-
 		}
-	}
-
-	if (val[0] == 'a') {
-		std::string temp = val;
-		for (int i = 0; i < adv_sensor.size(); i++) {
-			if (adv_sensor[i].id == temp) {
-				id = i;
-			}
-
+		else {
+			std::cout << "ERROR CHOOSE EXISTSING SENSOR!"<< std::endl;
 		}
 	}
 	return id;
@@ -191,7 +188,7 @@ void Cloud::printUnits()
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	std::cout << "\t\tADVANCED SENSORS:" << std::endl;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-	std::cout << "ID:\tStatus:\t\tReading:\t\tParameter:\t\tParamValue:\tInfo:\t" << std::endl;
+	std::cout << "ID:\tStatus:\t\tReading:\tParameter:\t\tParamValue:\tInfo:\t" << std::endl;
 	for (int i = 0; i < adv_sensor.size(); i++) {
 		std::cout << adv_sensor[i].id << "\t";
 		if (adv_sensor[i].status == 1) {
@@ -264,7 +261,7 @@ CPanel::CPanel() { //Default constructor
 void CPanel::printCPanel() {
 		std::cout << "\t\t\t   ____________________________________________" << std::endl;
 		std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
-		std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;
+		std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;/*
 		std::cout << "\t\tID:\tStatus:\t\tValue:\t\tInfo:" << std::endl;
 		for (int i = 0; i < sensor.size(); i++) {
 
@@ -290,8 +287,7 @@ void CPanel::printCPanel() {
 			std::cout << sensor[i].value << "\t\t";
 			std::cout << sensor[i].name << "\t" << std::endl;
 
-		}
-		std::cout << std::endl;
+		}*/
 		std::cout << "\t\t\t________________________________________________" << std::endl;
 		std::cout << "\t\t\t\t\tADVANCED SENSORS:" << std::endl;
 		std::cout << "\t\t\t________________________________________________\n" << std::endl;
