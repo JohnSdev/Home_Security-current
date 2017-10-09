@@ -44,42 +44,140 @@ int Cloud::id_to_int() {
 }
 
 int Cloud::removeSensor() {
-	int temp;
-	std::string compid;
-	std::cout << "Witch component do you want to remove?" << std::endl;
-	std::cout << "1. Advanced Sencor" << std::endl;
-	std::cout << "2.Door or IR sencor" << std::endl;
-	std::cin >> temp;
-	if (temp == 1)
-	{
-		std::cout << "Witch id do you want to remove?" << std::endl;
+	
+		std::string temp;
+		std::string compid;
+		/*int temp;
+		std::string compid;
+		std::cout << "Which component do you want to remove?" << std::endl;
+		std::cout << "1. Advanced Sencor" << std::endl;
+		std::cout << "2.Standard Sensors" << std::endl;
+		std::cout << "3.Go back to Cloud" << std::endl;
+		while (true) {
+		std::cin.clear();
+		std::cin >> temp;
+		if (temp == 1)
+		{
+		std::cout << "You have the following sensors" << std::endl;
+		if (adv_sensor.size() == 0)
+		{
+		std::cout << "You do not have anny advanced sensors" << std::endl;
+		return 3;
+
+		}
+		else
+		{
+
+		for (int i = 0; i < adv_sensor.size(); i++) {
+		std::cout << adv_sensor[i].id << std::endl;
+		}
+		}
+		std::cout << "Witch id do you want to remove? Write 'exit' to return to Cloud." << std::endl;
+		std::cin.clear();
 		std::cin >> compid;
+		if (compid == "exit") {
+		return 3;
+		}
 		for (int i = 0; i < adv_sensor.size(); i++)
-			if (adv_sensor[i].id == compid) {
-				adv_sensor.erase(adv_sensor.begin() + i);
-				return 0;
-			}
-				
+		if (adv_sensor[i].id == compid) {
+		adv_sensor.erase(adv_sensor.begin() + i);
+		std::cout << "Sensor:" << compid << " was succefully deleted" << std::endl;
+		return 0;
+		}
+
+
 		std::cout << "component A" << compid << " was succefully deleted" << std::endl;
 
-	}
-	if (temp == 2)
-	{
-		std::cout << "Witch id do you want to remove?" <<std::endl;
+		}
+		if (temp == 2)
+		{
+		std::cout << "You have the following standard sensors" << std::endl;
+		if (sensor.size() == 0)
+		{
+		std::cout << "You do not have anny sensors" << std::endl;
+		return 3;
+
+		}
+		else
+		{
+
+		for (int i = 0; i < sensor.size(); i++) {
+		std::cout << sensor[i].id  << std::endl;
+		}
+		}
+		std::cout << "Witch id do you want to remove?Write 'exit' to return to Cloud." << std::endl;
+		std::cin.clear();
 		std::cin >> compid;
+		if (compid == "exit") {
+		return 3;
+		}
 		for (int i = 0; i < sensor.size(); i++)
-			if (sensor[i].id == compid) {
-				sensor.erase(sensor.begin() + i);
+		if (sensor[i].id == compid) {
+		sensor.erase(sensor.begin() + i);
+		return 1;
+		}
+		}
+
+		if (temp == 3) {
+		return 3;
+		}
+		else
+		{
+		std::cout << "Print a valid input!" << std::endl;
+		}
+		}*/
+	
+		std::cout << "which component do you want to delete? or Print 'exit' to return to cloud" << std::endl<<std::endl;
+		while (true) {
+
+			for (int i = 0; i < adv_sensor.size(); i++) {
+				std::cout << adv_sensor[i].id << std::endl;
 			}
+			for (int i = 0; i < sensor.size(); i++) {
+				std::cout << sensor[i].id << std::endl;
+			}
+			std::cout << std::endl;
+			std::cin.clear();
+			std::cin >> temp;
+			if (temp[0] == 'd' || 'i')
+			{
+
+				for (int i = 0; i < sensor.size(); i++)
+					if (sensor[i].id == temp) {
+						sensor.erase(sensor.begin() + i);
+						return 1;
+
+					}
+				if (temp[0] == 'a')
+				{
+
+					for (int i = 0; i < adv_sensor.size(); i++)
+						if (adv_sensor[i].id == temp) {
+							adv_sensor.erase(adv_sensor.begin() + i);
+							return 0;
+
+						}
+				}
+
+				else
+				{
+					std::cout <<std::endl<< "Wrong input try again. print 'exit' if you want to return to cloud" << std::endl;
+					
+				}
+
+			}
+			else
+			{
+				std::cout << "Print a valid input!" << std::endl;
+			}
+		}
 	}
+	
 
 
-	else
-	{
-		std::cout << "Print a valid input!" <<std::endl;
-	}
+	
 
-}
+
 
 int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter) {
 
@@ -195,7 +293,7 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 
 void Cloud::printUnits()
 {
-	std::cout << "ID:\tStatus:\t\tValue:\t\tInfo:" << std::endl;
+	std::cout << "ID:\tStatus\t\tInfo:" << std::endl;
 	for (int i = 0; i < sensor.size(); i++) {
 
 		std::cout << sensor[i].id << "\t";
@@ -217,7 +315,7 @@ void Cloud::printUnits()
 			}
 		}
 
-		std::cout << sensor[i].value << "\t\t";
+		//std::cout << sensor[i].value << "\t\t";
 		std::cout << sensor[i].name << "\t" << std::endl;
 
 	}
@@ -276,7 +374,7 @@ void Cloud::menu()
 	std::cout << "1) Go to dashboard. " << std::endl;
 	std::cout << "2) Add Unit/sensor" << std::endl;
 	std::cout << "3) Remove sensor." << std::endl;
-	std::cout << "OR Write ID to turn on/off. " << std::endl;
+	std::cout << "OR Write ID to turn sensor on/off or close/open door. " << std::endl;
 }
 /*if (val[0] == 'd' || 'i' || 't') {
 std::string temp = val;
