@@ -50,8 +50,24 @@ int main()
 		else if (val == "3") {
 
 		}
+		else if (val[0] == 'a') {
+			std::cout << "TEST";
+			std::string temp = val;
+			for (int i = 0; i < adv_sensor.size(); i++) {
+				if (adv_sensor[i].id == temp) {
+					if (adv_sensor[i].status == 1) {
+						adv_sensor[i].status = 0;
+					//	std::cout << "TEST";
+					}
+					else {
+					//	std::cout << "TEST";
+						adv_sensor[i].status = 1;
+					}
+				}
+			}
 
-		else if (val[0] == 'd' || 'i' || 't') {
+		}
+		else if (val[0] == 'd' || 'i' ) {
 			std::string temp = val;
 
 			for (int i = 0; i < sensor.size(); i++) {

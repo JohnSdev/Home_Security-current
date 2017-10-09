@@ -34,7 +34,7 @@ int Cloud::id_to_int() {
 		}
 	}
 
-	if (val[0] == 't') {
+	if (val[0] == 'a') {
 		std::string temp = val;
 		for (int i = 0; i < adv_sensor.size(); i++) {
 			if (adv_sensor[i].id == temp) {
@@ -62,7 +62,7 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		adv_sensor.resize(tmpCounter);
 
 		//add_tmp();
-		std::string tempd = "t";
+		std::string tempd = "a";
 		std::string tmpString = std::to_string(tmpCounter);
 
 		tempd += tmpString;
@@ -79,19 +79,21 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		srand(time(NULL));
 		std::cin.ignore();
 		int random = rand() % 25 + 5;
-		adv_sensor[tmpCounter - 1].param_value = random;
+		adv_sensor[tmpCounter - 1].param_value = 35;
+		adv_sensor[tmpCounter - 1].reading = random;
+
 		int chooser;
 		std::cout << "What does your sensor measure?" << std::endl;
 		std::cout << "1)Temperature\n2)Humidity\n3)Shock" << std::endl;
 		std::cin >> chooser;
 		if (chooser == 1) {
-			adv_sensor[tmpCounter - 1].param = "Max temp alarm";
+			adv_sensor[tmpCounter - 1].param = "Temp alarm     ";
 		}
 		if (chooser == 2) {
-			adv_sensor[tmpCounter - 1].param = "Max humidity alarm";
+			adv_sensor[tmpCounter - 1].param = "Humidity alarm ";
 		}
 		if (chooser == 3) {
-			adv_sensor[tmpCounter - 1].param = "Shock value";
+			adv_sensor[tmpCounter - 1].param = "Vibration alarm";
 		}
 
 
@@ -163,7 +165,7 @@ void Cloud::printUnits()
 	for (int i = 0; i < sensor.size(); i++) {
 
 		std::cout << sensor[i].id << "\t";
-		if (sensor[i].id[0] == 't' || sensor[i].id[0] == 'i') {
+		if (sensor[i].id[0] == 'a' || sensor[i].id[0] == 'i') {
 			//std::cout << sensor[i].status << "\t";
 			if (sensor[i].status == 1) {
 				std::cout << "ON" << "\t\t";
@@ -189,7 +191,7 @@ void Cloud::printUnits()
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 	std::cout << "\t\tADVANCED SENSORS:" << std::endl;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-	std::cout << "ID:\tStatus:\t\tParameter:\tParamValue:\tInfo:\t" << std::endl;
+	std::cout << "ID:\tStatus:\t\tReading:\t\tParameter:\t\tParamValue:\tInfo:\t" << std::endl;
 	for (int i = 0; i < adv_sensor.size(); i++) {
 		std::cout << adv_sensor[i].id << "\t";
 		if (adv_sensor[i].status == 1) {
@@ -198,8 +200,9 @@ void Cloud::printUnits()
 		else {
 			std::cout << "OFF" << "\t\t";
 		}
+		std::cout << adv_sensor[i].reading << "\t\t";
 		std::cout << adv_sensor[i].param << "\t\t";
-		std::cout << adv_sensor[i].param_value << "\t";
+		std::cout << adv_sensor[i].param_value << "\t\t";
 		std::cout << adv_sensor[i].name << "\t" << std::endl;
 	}
 	std::cout << std::endl << std::endl << std::endl;
@@ -219,10 +222,11 @@ void Cloud::prepare()
 	sensor[1].id = "i1";
 
 	adv_sensor.resize(1);
-	adv_sensor[0].id = "t1";
+	adv_sensor[0].id = "a1";
 	adv_sensor[0].status = 1;
-	adv_sensor[0].param = "Max temp alarm";
-	adv_sensor[0].param_value = 23;
+	adv_sensor[0].param = "Temp alarm     ";
+	adv_sensor[0].reading = 23;
+	adv_sensor[0].param_value = 35;
 	adv_sensor[0].name = "Temperature in Cellar.";
 
 
@@ -265,7 +269,7 @@ void CPanel::printCPanel() {
 		for (int i = 0; i < sensor.size(); i++) {
 
 			std::cout << "\t\t" << sensor[i].id << "\t";
-			if (sensor[i].id[0] == 't' || sensor[i].id[0] == 'i') {
+			if (sensor[i].id[0] == 'a' || sensor[i].id[0] == 'i') {
 				//std::cout << sensor[i].status << "\t";
 				if (sensor[i].status == 1) {
 					std::cout << "ON" << "\t\t";
