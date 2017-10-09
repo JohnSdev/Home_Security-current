@@ -49,6 +49,7 @@ class Adv_sensor : public Sensor {
 public:
 	std::string param;
 	int param_value;
+	int reading;
 	Adv_sensor();
 };
 
