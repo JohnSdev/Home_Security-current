@@ -386,7 +386,7 @@ sensor.erase(sensor.begin() + i);
 printUnits();
 }*/
 
-enum Status { OFF, ON };
+
 
 CPanel::CPanel() { //Default constructor
 	serial = 0001;

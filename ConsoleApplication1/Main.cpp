@@ -66,13 +66,13 @@ int main()
 			std::string temp = val;
 			for (int i = 0; i < adv_sensor.size(); i++) {
 				if (adv_sensor[i].id == temp) {
-					if (adv_sensor[i].status == 1) {
-						adv_sensor[i].status = 0;
+					if (adv_sensor[i].status == ON) {
+						adv_sensor[i].status = OFF;
 					//	std::cout << "TEST";
 					}
 					else {
 					//	std::cout << "TEST";
-						adv_sensor[i].status = 1;
+						adv_sensor[i].status = ON;
 					}
 				}
 			}
@@ -83,11 +83,11 @@ int main()
 
 			for (int i = 0; i < sensor.size(); i++) {
 				if (sensor[i].id == temp) {
-					if (sensor[i].status == 1) {
-						sensor[i].status = 0;
+					if (sensor[i].status == ON) {
+						sensor[i].status = OFF;
 					}
 					else {
-						sensor[i].status = 1;
+						sensor[i].status = ON;
 					}
 				}
 

@@ -68,6 +68,7 @@ public:
 	
 
 };
+enum Status { OFF, ON };
 
 extern std::vector<Sensor> sensor;
 extern std::vector<Adv_sensor> adv_sensor;
