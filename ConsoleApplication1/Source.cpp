@@ -348,14 +348,14 @@ void Cloud::prepare()
 	sensor[1].name = "IR-sensor upstairs";
 	sensor[0].value = 1;
 	sensor[1].value = 0;
-	sensor[0].status = 0;
-	sensor[1].status = 0;
+	sensor[0].status = OFF;
+	sensor[1].status = OFF;
 	sensor[0].id = "d1";
 	sensor[1].id = "i1";
 
 	adv_sensor.resize(1);
 	adv_sensor[0].id = "a1";
-	adv_sensor[0].status = 1;
+	adv_sensor[0].status = ON;
 	adv_sensor[0].param = "Temp alarm     ";
 	adv_sensor[0].reading = 23;
 	adv_sensor[0].param_value = 35;
