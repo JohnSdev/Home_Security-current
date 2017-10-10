@@ -64,7 +64,7 @@ public:
 	void printCPanel();
 	int menuCPanel();
 	void sensorParam(int);
-	void Set_Status();
+
 	
 
 };
