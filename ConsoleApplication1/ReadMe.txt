@@ -1,37 +1,14 @@
-========================================================================
-    CONSOLE APPLICATION : [!output PROJECT_NAME] Project Overview
-========================================================================
+ReadMe HoneSecurity.
+Det här är ett program som låter slutanvändaren skapa olika enheter som sedan representeras i en cloud meny.
+Det finns 3 olika sensorer: Dörr, IR-sensor eller Advanced sensor. Den avancerade sensorn kan mäta temperatur
+tryck eller fukt.
+I cloud menyn kan användaren skapanya sensorer som representeras grafiskt. Man kan välja att sätta på eller
+stänga av sensorer i denna meny. Men även att ta bort sensorer.
+	Man kan välja att gå in och nyttja panelen. Där kan man ställa in specefika varnings värden för den 
+avancerade sensorn.
+Programet är uppbygt så att slutanvändaren matar in olika värden i promten och trycker ENTER.
 
-AppWizard has created this [!output PROJECT_NAME] application for you.
+Buggar:
+En "Bugg" är att om man skapar en sensor te.x i2, sen tar bort den . Nästa i sensor man skapar
+får inte id i2 utan id i3.
 
-This file contains a summary of what you will find in each of the files that
-make up your [!output PROJECT_NAME] application.
-
-
-    This is the main project file for VC++ projects generated using an Application Wizard.
-    It contains information about the version of Visual C++ that generated the file, and
-    information about the platforms, configurations, and project features selected with the
-    Application Wizard.
-
-    This is the filters file for VC++ projects generated using an Application Wizard. 
-    It contains information about the association between the files in your project 
-    and the filters. This association is used in the IDE to show grouping of files with
-    similar extensions under a specific node (for e.g. ".cpp" files are associated with the
-    "Source Files" filter).
-
-    This is the main application source file.
-
-/////////////////////////////////////////////////////////////////////////////
-Other standard files:
-
-StdAfx.h, StdAfx.cpp
-    These files are used to build a precompiled header (PCH) file
-    named [!output PROJECT_NAME].pch and a precompiled types file named StdAfx.obj.
-
-/////////////////////////////////////////////////////////////////////////////
-Other notes:
-
-AppWizard uses "TODO:" comments to indicate parts of the source code you
-should add to or customize.
-
-/////////////////////////////////////////////////////////////////////////////
