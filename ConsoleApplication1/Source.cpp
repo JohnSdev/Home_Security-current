@@ -394,6 +394,7 @@ CPanel::CPanel() { //Default constructor
 
 
 void CPanel::printCPanel() {
+		
 		std::cout << "\t\t\t   ____________________________________________" << std::endl;
 		std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
 		std::cout << "\t\t\t   ____________________________________________\n" << std::endl << std::endl;/*
