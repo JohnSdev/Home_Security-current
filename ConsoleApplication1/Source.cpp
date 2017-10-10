@@ -127,7 +127,7 @@ int Cloud::removeSensor() {
 		}
 		}*/
 	
-		std::cout << "which component do you want to delete? or Print 'exit' to return to cloud" << std::endl<<std::endl;
+		std::cout << "which component do you want to delete? or write 'exit' to return to cloud" << std::endl<<std::endl;
 		while (true) {
 
 			for (int i = 0; i < adv_sensor.size(); i++) {
@@ -139,6 +139,11 @@ int Cloud::removeSensor() {
 			std::cout << std::endl;
 			std::cin.clear();
 			std::cin >> temp;
+
+			if (temp == "exit" )
+			{
+				return 3;
+			}
 			if (temp[0] == 'd' || 'i')
 			{
 
@@ -159,9 +164,10 @@ int Cloud::removeSensor() {
 						}
 				}
 
+
 				else
 				{
-					std::cout <<std::endl<< "Wrong input try again. print 'exit' if you want to return to cloud" << std::endl;
+					std::cout <<std::endl<< "Wrong input try again. write 'exit' if you want to return to cloud" << std::endl;
 					
 				}
 
