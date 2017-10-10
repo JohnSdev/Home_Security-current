@@ -11,4 +11,5 @@ Programet är uppbygt så att slutanvändaren matar in olika värden i promten och t
 Buggar:
 En "Bugg" är att om man skapar en sensor te.x i2, sen tar bort den . Nästa i sensor man skapar
 får inte id i2 utan id i3.
+!!
 
