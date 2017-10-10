@@ -3,7 +3,7 @@
 #include "Cloud.h"
 #include <time.h> 
 
-Sensor::Sensor() {
+Sensor::Sensor() { //Default constructor
 	value = 0;
 	name = "empty";
 	status = 0;
@@ -11,12 +11,12 @@ Sensor::Sensor() {
 
 }
 
-Adv_sensor::Adv_sensor() {
+Adv_sensor::Adv_sensor() //Default constructor
 	param = "Max temp alam";
 	param_value = 23;
 }
 
-int Cloud::id_to_int() {
+int Cloud::id_to_int() { //Used to take an actual ID ex "d1" and interpretait it to an integer used to find the right vector position
 	std::cout << "\t\tType the ID of the sensor:" << std::endl;
 	int id;
 	std::string val;
@@ -408,7 +408,7 @@ CPanel::CPanel() { //Default constructor
 }
 
 
-void CPanel::printCPanel() {
+void CPanel::printCPanel() { //Prints actual status
 		
 		std::cout << "\t\t\t   ____________________________________________" << std::endl;
 		std::cout << "\t\t\t\t      Control Panel Interface" << std::endl;
