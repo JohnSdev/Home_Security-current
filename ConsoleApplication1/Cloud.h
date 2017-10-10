@@ -22,6 +22,8 @@ public:
 	void menu();
 	int id_to_int();
 	int removeSensor();
+	void changeStatus(std::string);
+	void changeAdvStatus(std::string);
 	//void menu(int);
 	//void test();
 
@@ -64,7 +66,7 @@ public:
 	void printCPanel();
 	int menuCPanel();
 	void sensorParam(int);
-	void Set_Status();
+
 	
 
 };
