@@ -178,11 +178,41 @@ int Cloud::removeSensor() {
 			}
 		}
 	}
-	
 
+	void Cloud::changeStatus(std::string id)
+	{
 
-	
+		for (int i = 0; i < sensor.size(); i++) {
+			if (sensor[i].id == id) {
+				if (sensor[i].status == ON) 
+				{
+					sensor[i].status = OFF;
+				}
 
+				else {
+					//	std::cout << "TEST";
+					sensor[i].status = ON;
+				}
+			}
+		}
+		
+	}
+
+	void Cloud::changeAdvStatus(std::string id)
+	{
+		for (int i = 0; i < adv_sensor.size(); i++) {
+			if (adv_sensor[i].id == id) {
+				if (adv_sensor[i].status == ON) {
+					adv_sensor[i].status = OFF;
+					//	std::cout << "TEST";
+				}
+				else {
+					//	std::cout << "TEST";
+					adv_sensor[i].status = ON;
+				}
+			}
+		}
+	}
 
 
 int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter) {
@@ -209,13 +239,11 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		std::cin.ignore();
 		std::cout << "Tell some info about it(e.g tmp sensor downstairs)" << std::endl;
 		std::string temp;
-		std::cin >> temp;
+		std::getline(std::cin, temp);
+		//std::cin.ignore();
 		adv_sensor[tmpCounter - 1].name = temp;
-		std::cout << tempd;
 		adv_sensor[tmpCounter - 1].id = tempd;
-		std::cout << adv_sensor[tmpCounter - 1].id;
 		srand(time(NULL));
-		std::cin.ignore();
 		int random = rand() % 25 + 5;
 		adv_sensor[tmpCounter - 1].param_value = 35;
 		adv_sensor[tmpCounter - 1].reading = random;
@@ -224,6 +252,7 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		std::cout << "What does your sensor measure?" << std::endl;
 		std::cout << "1)Temperature\n2)Humidity\n3)Shock" << std::endl;
 		std::cin >> chooser;
+
 		if (chooser == 1) {
 			adv_sensor[tmpCounter - 1].param = "Temp alarm     ";
 		}
@@ -234,8 +263,6 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 			adv_sensor[tmpCounter - 1].param = "Vibration alarm";
 		}
 
-
-		//std::cout << "Är den på?" << std::endl;
 		adv_sensor[tmpCounter - 1].status = 1;
 		return 1;
 	}
@@ -251,30 +278,15 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		std::cin.ignore();
 		std::cout << "Tell some info about it(e.g front door)" << std::endl;
 		std::string temp;
-		std::cin >> temp;
+		std::getline(std::cin ,temp);
+		std::putchar('n');
 
 		doorString += counterString;
 		sensor[counter - 1].name = temp;
 		sensor[counter - 1].id = doorString;
-		std::cin.ignore();
-		//std::cout << "Är den på?" << std::endl;
 		sensor[counter - 1].status = 1;
 		return 2;
-	}/*
-	if (val == 3) {
-		counter++;
-		sensor.resize(counter);
-
-		std::cin.ignore();
-		std::cout << "Tell some info about it(e.g IR sensor downstairs)" << std::endl;
-		std::string temp;
-		std::cin >> temp;
-		sensor[counter - 1].name = temp;
-		std::cin.ignore();
-		//std::cout << "Är den på?" << std::endl;
-		sensor[counter - 1].status = 1;
-		return 3;
-	}*/
+	}
 	if (val == 3) {
 		counter++;
 		sensor.resize(counter);
@@ -285,13 +297,10 @@ int Cloud::addSensor(int counter, int tmpCounter, int doorCounter, int irCounter
 		std::cin.ignore();
 		std::cout << "Tell some info about it(e.g IR sensor downstairs)" << std::endl;
 		std::string temp;
-		std::cin >> temp;
+		std::getline(std::cin , temp);
 		irstring += counterString;//a
 		sensor[counter - 1].name = temp;
 		sensor[counter - 1].id = irstring; //a
-
-		std::cin.ignore();
-		//std::cout << "Är den på?" << std::endl;
 		sensor[counter - 1].status = 1;
 		return 3;
 	}

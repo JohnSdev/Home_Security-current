@@ -22,6 +22,8 @@ public:
 	void menu();
 	int id_to_int();
 	int removeSensor();
+	void changeStatus(std::string);
+	void changeAdvStatus(std::string);
 	//void menu(int);
 	//void test();
 

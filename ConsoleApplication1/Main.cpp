@@ -62,38 +62,10 @@ int main()
 
 		}
 		else if (val[0] == 'a') {
-			std::cout << "TEST";
-			std::string temp = val;
-			for (int i = 0; i < adv_sensor.size(); i++) {
-				if (adv_sensor[i].id == temp) {
-					if (adv_sensor[i].status == ON) {
-						adv_sensor[i].status = OFF;
-					//	std::cout << "TEST";
-					}
-					else {
-					//	std::cout << "TEST";
-						adv_sensor[i].status = ON;
-					}
-				}
-			}
-
-		} //
+			cloud.changeAdvStatus(val);
+		} 
 		else if (val[0] == 'd' || 'i' ) {
-			std::string temp = val;
-
-			for (int i = 0; i < sensor.size(); i++) {
-				if (sensor[i].id == temp) {
-					if (sensor[i].status == ON) {
-						sensor[i].status = OFF;
-					}
-					else {
-						sensor[i].status = ON;
-					}
-				}
-
-			}
-			//cloud.printUnits();
-
+			cloud.changeStatus(val);
 		} 
 
 		else {
